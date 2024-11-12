@@ -1,0 +1,181 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
+    gap: 20px;
+    width: 100%;
+    background-color:lightskyblue;
+    padding: 2em;
+    gap: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.filter-form {
+    padding: 20px;
+    max-width: 100%;
+    margin: 20px auto;
+}
+
+.selamatdatang h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    min-width: 2em;
+}
+
+/* Gaya input dan select */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+.search-button{
+    display: grid;
+    align-items: end;
+}
+
+.button-primary {
+    height: 70%;
+    min-width: 40%;
+    max-width: 80%;
+    background-color: pink;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+    color : #333;
+}
+
+/* Kontainer untuk daftar mobil */
+.car-list {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.car-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.car-column {
+    display: flex;
+    justify-content: center;
+}
+
+/* Gaya card untuk tiap mobil */
+.card {
+    background-color: lightskyblue;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Tombol sewa sekarang */
+.button-secondary {
+    display: inline-block;
+    background-color: hwb(36 15% 5%);
+    color: white;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.button-secondary:hover {
+    color: #333;
+}
+
+/* Pop up utk button "Sewa Sekarang" */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-button {
+    background-color: #cf8ff4;
+    color: white;
+    margin: 1em 0em;
+    padding: 1em 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.popup-button:hover {
+    color: #333;
+}

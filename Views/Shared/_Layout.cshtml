@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentCar</title>
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <i class="fi fi-br-menu-burger" id="hamburgermenu" onclick="toggleMenu()"></i>
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand">RentCar</a>
+        <div class="login-register">
+            <ul>
+                <li class="nav-item">
+                    <a href="@Url.Action("Login", "Account")" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Register", "Account")" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<div class="sidebar-menu" id="sidebarMenu">
+    <ul>
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li><a href="kontak.html">Kontak Kami</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="footer">
+    <div class="insidefooter">
+        <h5>2024 ProyekRentCar. Semua Hak Dilindungi</h5>
+    </div>
+</footer>
+
+</body>
+<script>
+    function toggleMenu() {
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        sidebarMenu.classList.toggle('active');
+    }
+    
+    document.addEventListener('click', function(event) {
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const hamburgerMenu = document.getElementById('hamburgermenu');
+
+        if (sidebarMenu.classList.contains('active') && !sidebarMenu.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+            sidebarMenu.classList.remove('active');
+        }
+    });
+</script>
+</html>

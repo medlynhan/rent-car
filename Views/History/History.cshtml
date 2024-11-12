@@ -1,0 +1,38 @@
+@model IEnumerable<dynamic>
+@{
+    Layout = "_Layout2";
+}
+<link rel="stylesheet" href="~/css/history.css" />
+<div class="history-container">
+    <h2>Mobil yang Pernah Disewa</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="history-table-container">
+            <div class="table-header">
+                <div>Tanggal Sewa</div>
+                <div>Mobil</div>
+                <div>Harga Sewa per Hari</div>
+                <div>Total Hari</div>
+                <div>Total Harga</div>
+                <div>Status Pembayaran</div>
+            </div>
+
+            @foreach (var item in Model)
+            {
+                <div class="table-row">
+                    <div>@item.RentalDate.ToString("dd MMMM yyyy") - @item.ReturnDate?.ToString("dd MMMM yyyy")</div>
+                    <div>@item.CarName</div>
+                    <div>Rp. @string.Format("{0:N0}", item.PricePerDay)</div>
+                    <div>@item.TotalDays</div>
+                    <div>Rp. @string.Format("{0:N0}", item.TotalPrice)</div>
+                    <div style="color:@(item.PaymentStatus == "Sudah Dibayar" ? "green" : "red")">@item.PaymentStatus</div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Tidak ada riwayat.</p>
+    }
+</div>

@@ -1,0 +1,92 @@
+.car-view-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #cf8ff4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Gambar Mobil */
+.car-image img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-info {
+    color: #333;
+}
+
+.car-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Tabel Informasi Mobil */
+.car-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.car-info-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.car-info-table td:first-child {
+    font-weight: bold;
+    color: #666;
+    text-align: left;
+    width: 40%;
+}
+
+.car-info-table td:last-child {
+    text-align: left;
+    color: #333;
+}
+
+.btn-rent {
+    background-color: pink; 
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-rent:hover {
+    color : #333; 
+}
+
+/* Tombol back di atas */
+.back-button-container {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.btn-back {
+    background-color: #cf8ff4;
+    color: #333;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-back:hover{
+    color: #666;
+}

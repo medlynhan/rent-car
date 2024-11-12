@@ -1,0 +1,55 @@
+@model ProyekRentCar.Models.MsCar
+@{
+    Layout = "_Layout2";
+}
+<link rel="stylesheet" href="~/css/carview.css" />
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+<div class="car-view-container">
+    <div class="back-button-container">
+        <button class="btn-back" onclick="history.back()"><h1><i class="fi fi-br-cross"></i></h1></button>
+    </div>
+    <div class="car-image">
+        @foreach (var image in Model.MsCarImages)
+        {
+            <img src="@image.ImageLink" alt="@Model.Name" />
+        }
+    </div>
+    <div class="car-info">
+        <h2>Informasi Mobil</h2>
+        <table class="car-info-table">
+            <tr>
+                <td><strong>Tipe Mobil</strong></td>
+                <td>@Model.Model</td>
+            </tr>
+            <tr>
+                <td><strong>Nama Mobil</strong></td>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <td><strong>Transmisi</strong></td>
+                <td>@Model.Transmission</td>
+            </tr>
+            <tr>
+                <td><strong>Jumlah Penumpang</strong></td>
+                <td>@Model.NumberOfCarSeats Penumpang</td>
+            </tr>
+            <tr>
+                <td><strong>Nama Penyewa</strong></td>
+                <td>Putra (putra44@gmail.com)</td> <!-- Ganti sesuai data penyewa yang login, jika tersedia -->
+            </tr>
+            <tr>
+                <td><strong>Tanggal Sewa</strong></td>
+                <td>16 Oktober 2024 sampai 19 Oktober 2024</td> <!-- Ganti dengan tanggal sewa yang diinput oleh user -->
+            </tr>
+            <tr>
+                <td><strong>Harga Sewa</strong></td>
+                <td>Rp. @string.Format("{0:N0}", Model.PricePerDay) / hari</td>
+            </tr>
+            <tr>
+                <td><strong>Total Harga Sewa</strong></td>
+                <td>Rp. 1,800,000</td> <!-- Ganti sesuai perhitungan total harga sewa -->
+            </tr>
+        </table>
+        <button class="btn-rent">Sewa</button>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@model ProyekRentCar.Models.MsCustomer
+
+@{
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="register-container">
+    <div class="register-box">
+        <h2>Login Account</h2>
+        <form id="loginForm" method="post" asp-controller="Account" asp-action="Login" onsubmit="return validateForm()">
+            <div class="form-grid">
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required />
+                </div>
+            </div>
+            <button type="submit" id="loginButton" class="btn-login">Login</button>
+            <div><a href="@Url.Action("Register", "Account")" class="to-register"><h4>Belum Punya Akun? Registrasi di sini</h4></a></div>
+        </form>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorLoginMessage))
+{
+    <script>
+        alert("@ViewBag.ErrorLoginMessage");
+    </script>
+}

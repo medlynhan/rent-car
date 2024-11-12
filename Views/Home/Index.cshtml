@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ProyekRentCar.Models.MsCar>
+
+@{
+    ViewData["Title"] = "Daftar Mobil";
+}
+<link rel="stylesheet" href="~/css/Index.css" />
+
+<div class="filter-form">
+    <div class="selamatdatang"><h3>Selamat Datang di Rental Mobil Kami</h3></div>
+    <div class="search-column">
+        <form method="get" asp-action="Index">
+            <div class="form-group">
+                <label for="pickupDate">Pickup Date:</label>
+                <input type="date" id="pickupDate" name="pickupDate" class="input-field" value="@ViewBag.PickupDate" />
+            </div>
+            
+            <div class="form-group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" id="returnDate" name="returnDate" class="input-field" value="@ViewBag.ReturnDate" />
+            </div>
+            
+            <div class="form-group">
+                <label for="year">Filter Tahun Pembuatan: </label>
+                <select id="year" name="year" class="input-field">
+                    <option value="">Semua Tahun</option>
+                    @for (int i = DateTime.Now.Year; i >= 2000; i--)
+                    {
+                        if (ViewBag.SelectedYear?.ToString() == i.ToString())
+                        {
+                            <option value="@i" selected>@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="sortOrder">Sortir Berdasarkan:</label>
+                <select id="sortOrder" name="sortOrder" class="input-field">
+                    @if (ViewBag.SortOrder == "Harga Terendah - Tertinggi")
+                    {
+                        <option value="Harga Terendah - Tertinggi" selected>Harga Terendah - Tertinggi</option>
+                    }
+                    else
+                    {
+                        <option value="Harga Terendah - Tertinggi">Harga Terendah - Tertinggi</option>
+                    }
+
+                    @if (ViewBag.SortOrder == "Harga Tertinggi - Terendah")
+                    {
+                        <option value="Harga Tertinggi - Terendah" selected>Harga Tertinggi - Terendah</option>
+                    }
+                    else
+                    {
+                        <option value="Harga Tertinggi - Terendah">Harga Tertinggi - Terendah</option>
+                    }
+                </select>
+            </div>
+            
+            <div class="search-button">
+                <button type="submit" class="button-primary">Cari</button>
+            </div>    
+        </form>
+    </div>
+</div>
+
+@if (ViewBag.IsSearchPerformed)
+{
+    <div class="car-list">
+        @if (Model.Any())
+        {
+            <div class="car-row">
+                @foreach (var car in Model)
+                {
+                    <div class="car-column">
+                        <div class="card">
+                            <img src="@(car.MsCarImages?.FirstOrDefault()?.ImageLink ?? "/images/default-car.jpg")" 
+                                 alt="@car.Name" class="card-image" />
+                            <div class="card-body">
+                                <h5 class="card-title">@car.Name @car.Model @car.Year</h5>
+                                <p class="card-text">Harga: Rp. @(Convert.ToDecimal(car.PricePerDay).ToString("N0")) / hari</p>
+                                <a href="javascript:void(0);" onclick="showPopup()" class="button-secondary">Sewa Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h3>Tidak ada mobil yang tersedia untuk pencarian ini.</h3>
+        }
+    </div>
+    <div id="login-popup" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Harap Login</h3>
+            <p>Anda perlu login terlebih dahulu untuk menyewa mobil.</p>
+            <button onclick="closePopup()" class="popup-button">Tutup</button>
+        </div>
+    </div>
+}
+<script>
+    function showPopup() {
+        document.getElementById("login-popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("login-popup").style.display = "none";
+    }
+</script>
+
+
+

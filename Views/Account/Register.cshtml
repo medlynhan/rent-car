@@ -1,0 +1,56 @@
+@model ProyekRentCar.Models.MsCustomer
+
+<link rel="stylesheet" href="~/css/register.css" />
+
+<div class="register-container">
+    <div class="register-box">
+        <h2>Register Account</h2>
+        <form id="registerForm" method="post" asp-controller="Account" asp-action="Register" onsubmit="return validateForm()">
+            <div class="form-grid">
+                <div>
+                    <label for="name">Nama Lengkap:</label>
+                    <input type="text" id="name" name="name" required />
+                    <span id="usernameerror" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                    <span id="emailerror" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="phone_number">Nomor Telepon:</label>
+                    <input type="text" id="phone_number" name="PhoneNumber" required />
+                    <span id="phoneerror" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required />
+                    <span id="passerror" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="ConfirmPassword">Re-enter Password:</label>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" required />
+                    <span id="confirmpasserror" class="error-message"></span>
+                </div>
+                <div>
+                    <label for="address">Alamat:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div>
+                    <label for="driver_license_number">Driver License:</label>
+                    <input type="text" id="driver_license_number" name="DriverLicenseNumber" required />
+                    <span id="driverlicenseerror" class="error-message"></span> 
+                </div>
+            </div>
+            <button type="submit" id="registerButton" class="btn-register">Register</button>
+            <div><a href="@Url.Action("Login", "Account")" class="to-login"><h4>Sudah Punya Akun? Login di sini</h4></a></div>
+        </form>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorRegisterMessage))
+{
+    <script>
+        alert("@ViewBag.ErrorRegisterMessage");
+    </script>
+}
+<script src="~/js/register.js"></script>
